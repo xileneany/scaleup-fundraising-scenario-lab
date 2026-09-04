@@ -201,6 +201,55 @@ allocation, supply_summary = allocate_suppliers(
     max_supplier_dependency=max_dependency,
 )
 
+# ---------------------------------------------------------
+# FINANCIAL ASSUMPTIONS
+# ---------------------------------------------------------
+
+starting_cash = float(
+    get_financial_assumption("starting_cash")
+)
+
+industrial_scaleup_capex = float(
+    get_financial_assumption("industrial_scaleup_capex")
+)
+
+supplier_onboarding_cost = float(
+    get_financial_assumption("supplier_onboarding_cost")
+)
+
+working_capital_months = float(
+    get_financial_assumption("working_capital_months")
+)
+
+minimum_cash_buffer = float(
+    get_financial_assumption("minimum_cash_buffer")
+)
+
+# ---------------------------------------------------------
+# SCALE-UP FINANCIAL IMPACT
+# ---------------------------------------------------------
+
+scaleup_financials = calculate_scaleup_investment(
+    target_supply_t=requirements[
+        "target_contracted_supply_t"
+    ],
+    weighted_landed_cost_eur_t=supply_summary[
+        "weighted_landed_cost_eur_t"
+    ],
+    industrial_scaleup_capex=industrial_scaleup_capex,
+    supplier_onboarding_cost=supplier_onboarding_cost,
+    working_capital_months=working_capital_months,
+)
+
+
+funding_position = calculate_funding_position(
+    starting_cash=starting_cash,
+    public_grant=public_grant,
+    total_scaleup_investment=scaleup_financials[
+        "total_scaleup_investment"
+    ],
+    minimum_cash_buffer=minimum_cash_buffer,
+)
 
 # ---------------------------------------------------------
 # EXECUTIVE OVERVIEW
