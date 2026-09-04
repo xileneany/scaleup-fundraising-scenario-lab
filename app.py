@@ -119,23 +119,27 @@ conversion_ratio = st.sidebar.slider(
     step=0.1,
 )
 
-supply_buffer = st.sidebar.slider(
+supply_buffer_pct = st.sidebar.slider(
     "Supply resilience buffer",
-    min_value=0.00,
-    max_value=0.40,
-    value=float(scenario["supply_buffer"]),
-    step=0.05,
-    format="%.0f%%",
+    min_value=0,
+    max_value=40,
+    value=int(float(scenario["supply_buffer"]) * 100),
+    step=5,
+    format="%d%%",
 )
 
-max_dependency = st.sidebar.slider(
+supply_buffer = supply_buffer_pct / 100
+
+max_dependency_pct = st.sidebar.slider(
     "Maximum supplier dependency",
-    min_value=0.20,
-    max_value=0.60,
-    value=max_supplier_dependency,
-    step=0.05,
-    format="%.0f%%",
+    min_value=20,
+    max_value=60,
+    value=int(max_supplier_dependency * 100),
+    step=5,
+    format="%d%%",
 )
+
+max_dependency = max_dependency_pct / 100
 
 
 st.sidebar.caption(
