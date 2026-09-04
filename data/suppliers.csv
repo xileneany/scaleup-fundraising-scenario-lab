@@ -1,0 +1,11 @@
+supplier_id,supplier_name,country,annual_capacity_t,unit_cost_eur,lead_time_days,reliability_pct,quality_score,risk_score,payment_terms_days,setup_cost_eur
+SUP-001,Supplier A,Germany,2600,108,12,97,94,18,30,180000
+SUP-002,Supplier B,Netherlands,3200,103,15,94,91,22,30,220000
+SUP-003,Supplier C,Portugal,2100,96,20,92,90,28,45,140000
+SUP-004,Supplier D,Poland,3800,91,24,89,88,35,30,260000
+SUP-005,Supplier E,Spain,2900,99,18,95,93,24,45,190000
+SUP-006,Supplier F,Czech Republic,3500,94,22,93,89,30,30,230000
+SUP-007,Supplier G,France,2400,106,14,96,95,20,30,170000
+SUP-008,Supplier H,Italy,3100,98,21,91,92,27,60,210000
+SUP-009,Supplier I,Belgium,1800,110,11,98,96,16,30,150000
+SUP-010,Supplier J,Austria,2700,104,16,95,94,19,45,185000
