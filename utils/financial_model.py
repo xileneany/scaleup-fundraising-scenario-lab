@@ -196,3 +196,45 @@ def calculate_raise_scenario(
         "net_proceeds": net_proceeds,
         "post_raise_cash": post_raise_cash,
     }
+
+def calculate_required_raise(
+    runway_df,
+    minimum_cash_buffer,
+    target_month,
+    transaction_cost_pct,
+):
+    """
+    Estimate the gross private raise required to maintain the
+    minimum cash buffer through a selected target month.
+
+    The calculation uses the lowest projected cash balance up to
+    the target month, rather than only the ending balance.
+    """
+
+    period_df = runway_df[
+        runway_df["month"] <= target_month
+    ]
+
+    minimum_projected_cash = period_df[
+        "ending_cash"
+    ].min()
+
+    net_funding_required = max(
+        minimum_cash_buffer - minimum_projected_cash,
+        0,
+    )
+
+    if transaction_cost_pct < 1:
+        gross_raise_required = (
+            net_funding_required
+            / (1 - transaction_cost_pct)
+        )
+    else:
+        gross_raise_required = 0
+
+    return {
+        "target_month": target_month,
+        "minimum_projected_cash": minimum_projected_cash,
+        "net_funding_required": net_funding_required,
+        "gross_raise_required": gross_raise_required,
+    }
