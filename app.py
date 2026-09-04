@@ -667,6 +667,29 @@ st.write(
 )
 
 # ---------------------------------------------------------
+# FUNDING REQUIREMENT
+# ---------------------------------------------------------
+
+st.header("Funding Requirement")
+
+st.caption(
+    "Estimated private capital required to maintain the modeled "
+    "€1.5M minimum cash buffer through the selected planning horizon."
+)
+
+r1, r2 = st.columns(2)
+
+r1.metric(
+    "Required Raise — 18M",
+    f"€{required_raise_18m['gross_raise_required'] / 1_000_000:.1f}M",
+)
+
+r2.metric(
+    "Required Raise — 24M",
+    f"€{required_raise_24m['gross_raise_required'] / 1_000_000:.1f}M",
+)
+
+# ---------------------------------------------------------
 # FUNDRAISING COMPARISON
 # ---------------------------------------------------------
 
