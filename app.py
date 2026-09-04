@@ -303,6 +303,78 @@ base_runway_df, base_runway_months = simulate_cash_runway(
 )
 
 # ---------------------------------------------------------
+# FUNDRAISING SCENARIOS
+# ---------------------------------------------------------
+
+raise_scenarios = {
+    "No Raise": 0,
+    "Lean Raise": 4_000_000,
+    "Balanced Raise": 6_000_000,
+    "Accelerated Raise": 8_000_000,
+}
+
+fundraising_results = []
+
+for scenario_name, raise_amount in raise_scenarios.items():
+
+    raise_result = calculate_raise_scenario(
+        cash_after_scaleup=funding_position[
+            "cash_after_scaleup"
+        ],
+        raise_amount=raise_amount,
+        transaction_cost_pct=transaction_cost_pct,
+    )
+
+    runway_df, runway_months = simulate_cash_runway(
+        starting_cash=raise_result["post_raise_cash"],
+        monthly_revenue=monthly_revenue,
+        monthly_revenue_growth=monthly_revenue_growth,
+        gross_margin=gross_margin,
+        monthly_payroll=monthly_payroll,
+        monthly_other_opex=monthly_other_opex,
+        monthly_base_capex=monthly_base_capex,
+        monthly_feedstock_spend=scaleup_financials[
+            "monthly_feedstock_spend"
+        ],
+        minimum_cash_buffer=minimum_cash_buffer,
+        horizon_months=model_horizon_months,
+    )
+
+    cash_month_12 = runway_df.loc[
+        runway_df["month"] == 12,
+        "ending_cash"
+    ].iloc[0]
+
+    cash_month_24 = runway_df.loc[
+        runway_df["month"] == 24,
+        "ending_cash"
+    ].iloc[0]
+
+    cash_month_36 = runway_df.loc[
+        runway_df["month"] == 36,
+        "ending_cash"
+    ].iloc[0]
+
+    fundraising_results.append(
+        {
+            "scenario": scenario_name,
+            "raise_amount": raise_amount,
+            "net_proceeds": raise_result[
+                "net_proceeds"
+            ],
+            "post_raise_cash": raise_result[
+                "post_raise_cash"
+            ],
+            "runway_months": runway_months,
+            "cash_month_12": cash_month_12,
+            "cash_month_24": cash_month_24,
+            "cash_month_36": cash_month_36,
+        }
+    )
+
+fundraising_df = pd.DataFrame(fundraising_results)
+
+# ---------------------------------------------------------
 # EXECUTIVE OVERVIEW
 # ---------------------------------------------------------
 
@@ -561,6 +633,83 @@ st.write(
 st.write(
     f"**Cash remaining after scale-up:** "
     f"€{funding_position['cash_after_scaleup'] / 1_000_000:.2f}M"
+)
+
+# ---------------------------------------------------------
+# FUNDRAISING COMPARISON
+# ---------------------------------------------------------
+
+st.header("Fundraising Scenarios")
+
+st.caption(
+    "Illustrative private fundraising scenarios layered on top of "
+    "the modeled scale-up plan and the publicly announced grant."
+)
+
+display_fundraising = fundraising_df.copy()
+
+display_fundraising["Raise"] = (
+    display_fundraising["raise_amount"] / 1_000_000
+)
+
+display_fundraising["Net Proceeds"] = (
+    display_fundraising["net_proceeds"] / 1_000_000
+)
+
+display_fundraising["Post-Raise Cash"] = (
+    display_fundraising["post_raise_cash"] / 1_000_000
+)
+
+display_fundraising["Cash @ 12M"] = (
+    display_fundraising["cash_month_12"] / 1_000_000
+)
+
+display_fundraising["Cash @ 24M"] = (
+    display_fundraising["cash_month_24"] / 1_000_000
+)
+
+display_fundraising["Cash @ 36M"] = (
+    display_fundraising["cash_month_36"] / 1_000_000
+)
+
+display_fundraising = display_fundraising[
+    [
+        "scenario",
+        "Raise",
+        "Net Proceeds",
+        "Post-Raise Cash",
+        "runway_months",
+        "Cash @ 12M",
+        "Cash @ 24M",
+        "Cash @ 36M",
+    ]
+]
+
+display_fundraising.columns = [
+    "Scenario",
+    "Raise (€M)",
+    "Net Proceeds (€M)",
+    "Post-Raise Cash (€M)",
+    "Runway (Months)",
+    "Cash @ 12M (€M)",
+    "Cash @ 24M (€M)",
+    "Cash @ 36M (€M)",
+]
+
+st.dataframe(
+    display_fundraising.style.format(
+        {
+            "Raise (€M)": "€{:.1f}",
+            "Net Proceeds (€M)": "€{:.1f}",
+            "Post-Raise Cash (€M)": "€{:.1f}",
+            "Runway (Months)": "{:.0f}",
+            "Cash @ 12M (€M)": "€{:.1f}",
+            "Cash @ 24M (€M)": "€{:.1f}",
+            "Cash @ 36M (€M)": "€{:.1f}",
+        }
+    ),
+    use_container_width=True,
+    hide_index=True,
 )
 
 # ---------------------------------------------------------
