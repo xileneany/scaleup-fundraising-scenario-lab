@@ -90,23 +90,50 @@ def simulate_cash_runway(
     monthly_feedstock_spend,
     minimum_cash_buffer,
     horizon_months=36,
+    post_scaleup_revenue_uplift=0.0,
+    commercial_ramp_months=12,
 ):
     """
     Simulate monthly cash development after the modeled scale-up.
 
-    The model stops measuring runway when cash falls below the
-    management minimum cash buffer.
+    Revenue combines:
+    1. Organic monthly growth.
+    2. A synthetic post-scale-up commercial uplift that is realized
+       progressively over the selected ramp period.
+
+    Runway is measured as the first month in which cash falls below
+    the management minimum cash buffer.
     """
 
     cash = starting_cash
-    revenue = monthly_revenue
+    base_revenue = monthly_revenue
 
     results = []
     runway_months = horizon_months
-
     buffer_breached = False
 
     for month in range(1, horizon_months + 1):
+
+        # Organic revenue growth
+        organic_revenue = (
+            base_revenue
+            * ((1 + monthly_revenue_growth) ** (month - 1))
+        )
+
+        # Progressive realization of post-scale-up commercial uplift
+        ramp_progress = min(
+            month / commercial_ramp_months,
+            1.0,
+        )
+
+        realized_uplift = (
+            post_scaleup_revenue_uplift
+            * ramp_progress
+        )
+
+        revenue = organic_revenue * (
+            1 + realized_uplift
+        )
 
         gross_profit = revenue * gross_margin
 
@@ -124,6 +151,8 @@ def simulate_cash_runway(
             {
                 "month": month,
                 "revenue": revenue,
+                "organic_revenue": organic_revenue,
+                "realized_uplift_pct": realized_uplift,
                 "gross_profit": gross_profit,
                 "monthly_cash_flow": monthly_cash_flow,
                 "ending_cash": cash,
@@ -136,8 +165,6 @@ def simulate_cash_runway(
         ):
             runway_months = month
             buffer_breached = True
-
-        revenue *= 1 + monthly_revenue_growth
 
     return pd.DataFrame(results), runway_months
 
