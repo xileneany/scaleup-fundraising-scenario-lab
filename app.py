@@ -265,12 +265,6 @@ commercial_ramp_months = int(
     get_financial_assumption("commercial_ramp_months")
 )
 
-st.write(
-    "DEBUG — Commercial uplift:",
-    post_scaleup_revenue_uplift,
-    "| Ramp months:",
-    commercial_ramp_months,
-)
 # ---------------------------------------------------------
 # SCALE-UP FINANCIAL IMPACT
 # ---------------------------------------------------------
