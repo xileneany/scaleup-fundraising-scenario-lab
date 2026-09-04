@@ -1,0 +1,14 @@
+assumption,value,unit,data_type,description
+starting_cash,4200000,EUR,synthetic,Illustrative cash available at the start of the model
+monthly_revenue,850000,EUR,synthetic,Illustrative current monthly revenue
+monthly_revenue_growth,0.025,decimal,synthetic,Illustrative monthly revenue growth rate
+gross_margin,0.42,decimal,synthetic,Illustrative gross margin before modeled scale-up effects
+monthly_payroll,620000,EUR,synthetic,Illustrative monthly payroll
+monthly_other_opex,310000,EUR,synthetic,Illustrative recurring operating expenses excluding modeled feedstock spend
+monthly_base_capex,90000,EUR,synthetic,Illustrative recurring capital expenditure
+industrial_scaleup_capex,6500000,EUR,synthetic,Illustrative one-time industrial scale-up investment
+supplier_onboarding_cost,350000,EUR,synthetic,Illustrative supplier qualification and onboarding cost
+working_capital_months,2,months,synthetic,Illustrative feedstock inventory and working-capital coverage
+minimum_cash_buffer,1500000,EUR,synthetic,Illustrative management minimum cash reserve
+fundraising_transaction_cost_pct,0.03,decimal,synthetic,Illustrative transaction cost as share of private capital raised
+model_horizon_months,36,months,synthetic,Illustrative financial planning horizon
