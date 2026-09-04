@@ -14,5 +14,3 @@ working_capital_months,2,months,synthetic,Illustrative feedstock inventory and w
 minimum_cash_buffer,1500000,EUR,synthetic,Illustrative management minimum cash reserve
 fundraising_transaction_cost_pct,0.03,decimal,synthetic,Illustrative transaction cost as share of private capital raised
 model_horizon_months,36,months,synthetic,Illustrative financial planning horizon
-post_scaleup_revenue_uplift,0.50,decimal,synthetic,Illustrative revenue uplift as industrial production ramps following scale-up
-commercial_ramp_months,12,months,synthetic,Illustrative period over which the modeled post-scale-up revenue uplift is progressively realized
