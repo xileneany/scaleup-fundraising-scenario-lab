@@ -7,6 +7,12 @@ from utils.supply_model import (
     allocate_suppliers,
 )
 
+from utils.financial_model import (
+    calculate_scaleup_investment,
+    calculate_funding_position,
+    simulate_cash_runway,
+    calculate_raise_scenario,
+)
 
 # ---------------------------------------------------------
 # PAGE CONFIG
@@ -28,11 +34,24 @@ def load_data():
     suppliers = pd.read_csv("data/suppliers.csv")
     assumptions = pd.read_csv("data/production_assumptions.csv")
     scenarios = pd.read_csv("data/production_scenarios.csv")
+    financial_assumptions = pd.read_csv(
+        "data/financial_assumptions.csv"
+    )
 
-    return suppliers, assumptions, scenarios
+    return (
+        suppliers,
+        assumptions,
+        scenarios,
+        financial_assumptions,
+    )
 
 
-suppliers, assumptions, scenarios = load_data()
+(
+    suppliers,
+    assumptions,
+    scenarios,
+    financial_assumptions,
+) = load_data()
 
 
 # ---------------------------------------------------------
@@ -45,7 +64,12 @@ def get_assumption(name):
         "value"
     ].iloc[0]
 
-
+def get_financial_assumption(name):
+    return financial_assumptions.loc[
+        financial_assumptions["assumption"] == name,
+        "value"
+    ].iloc[0]
+    
 # ---------------------------------------------------------
 # PUBLIC CONTEXT
 # ---------------------------------------------------------
