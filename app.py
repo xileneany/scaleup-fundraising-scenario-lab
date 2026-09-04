@@ -257,6 +257,14 @@ model_horizon_months = int(
     get_financial_assumption("model_horizon_months")
 )
 
+post_scaleup_revenue_uplift = float(
+    get_financial_assumption("post_scaleup_revenue_uplift")
+)
+
+commercial_ramp_months = int(
+    get_financial_assumption("commercial_ramp_months")
+)
+
 # ---------------------------------------------------------
 # SCALE-UP FINANCIAL IMPACT
 # ---------------------------------------------------------
@@ -300,6 +308,8 @@ base_runway_df, base_runway_months = simulate_cash_runway(
     ],
     minimum_cash_buffer=minimum_cash_buffer,
     horizon_months=model_horizon_months,
+    post_scaleup_revenue_uplift=post_scaleup_revenue_uplift,
+    commercial_ramp_months=commercial_ramp_months,
 )
 
 # ---------------------------------------------------------
@@ -338,6 +348,8 @@ for scenario_name, raise_amount in raise_scenarios.items():
         ],
         minimum_cash_buffer=minimum_cash_buffer,
         horizon_months=model_horizon_months,
+        post_scaleup_revenue_uplift=post_scaleup_revenue_uplift,
+        commercial_ramp_months=commercial_ramp_months,
     )
 
     cash_month_12 = runway_df.loc[
