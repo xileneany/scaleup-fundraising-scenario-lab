@@ -689,6 +689,11 @@ r2.metric(
     f"€{required_raise_24m['gross_raise_required'] / 1_000_000:.1f}M",
 )
 
+st.caption(
+    "Calculated from the lowest projected cash balance within each "
+    "period and adjusted for the synthetic 3% fundraising transaction cost."
+)
+
 # ---------------------------------------------------------
 # FUNDRAISING COMPARISON
 # ---------------------------------------------------------
