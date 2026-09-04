@@ -225,6 +225,38 @@ minimum_cash_buffer = float(
     get_financial_assumption("minimum_cash_buffer")
 )
 
+monthly_revenue = float(
+    get_financial_assumption("monthly_revenue")
+)
+
+monthly_revenue_growth = float(
+    get_financial_assumption("monthly_revenue_growth")
+)
+
+gross_margin = float(
+    get_financial_assumption("gross_margin")
+)
+
+monthly_payroll = float(
+    get_financial_assumption("monthly_payroll")
+)
+
+monthly_other_opex = float(
+    get_financial_assumption("monthly_other_opex")
+)
+
+monthly_base_capex = float(
+    get_financial_assumption("monthly_base_capex")
+)
+
+transaction_cost_pct = float(
+    get_financial_assumption("fundraising_transaction_cost_pct")
+)
+
+model_horizon_months = int(
+    get_financial_assumption("model_horizon_months")
+)
+
 # ---------------------------------------------------------
 # SCALE-UP FINANCIAL IMPACT
 # ---------------------------------------------------------
@@ -249,6 +281,25 @@ funding_position = calculate_funding_position(
         "total_scaleup_investment"
     ],
     minimum_cash_buffer=minimum_cash_buffer,
+)
+
+# ---------------------------------------------------------
+# BASE RUNWAY - NO PRIVATE RAISE
+# ---------------------------------------------------------
+
+base_runway_df, base_runway_months = simulate_cash_runway(
+    starting_cash=funding_position["cash_after_scaleup"],
+    monthly_revenue=monthly_revenue,
+    monthly_revenue_growth=monthly_revenue_growth,
+    gross_margin=gross_margin,
+    monthly_payroll=monthly_payroll,
+    monthly_other_opex=monthly_other_opex,
+    monthly_base_capex=monthly_base_capex,
+    monthly_feedstock_spend=scaleup_financials[
+        "monthly_feedstock_spend"
+    ],
+    minimum_cash_buffer=minimum_cash_buffer,
+    horizon_months=model_horizon_months,
 )
 
 # ---------------------------------------------------------
