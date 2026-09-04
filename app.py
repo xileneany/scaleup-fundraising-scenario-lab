@@ -49,7 +49,7 @@ st.markdown(
     /* ---------- TYPOGRAPHY ---------- */
 
     h1 {
-        color: #0B0B0B !important;
+        color: #16E879 !important;
         font-weight: 700 !important;
         letter-spacing: -1.5px;
     }
