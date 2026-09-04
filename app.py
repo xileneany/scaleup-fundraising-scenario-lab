@@ -827,14 +827,17 @@ st.caption(
 
 r1, r2 = st.columns(2)
 
-r1.metric(
-    "Required Raise — 18M",
-    f"€{required_raise_18m['gross_raise_required'] / 1_000_000:.1f}M",
-)
+with r1:
+    kpi_card(
+        "Required Raise — 18M",
+        f"€{required_raise_18m['gross_raise_required'] / 1_000_000:.1f}M"
+    )
 
-r2.metric(
-    "Required Raise — 24M",
-    f"€{required_raise_24m['gross_raise_required'] / 1_000_000:.1f}M",
+with r2:
+    kpi_card(
+        "Required Raise — 24M",
+        f"€{required_raise_24m['gross_raise_required'] / 1_000_000:.1f}M"
+    )
 )
 
 st.caption(
