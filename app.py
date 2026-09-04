@@ -447,6 +447,70 @@ else:
         "under the selected scenario and concentration constraint."
     )
 
+# ---------------------------------------------------------
+# FINANCIAL IMPACT
+# ---------------------------------------------------------
+
+st.header("Financial Impact")
+
+st.caption(
+    "Illustrative financial impact of the selected supply and "
+    "production scenario. Financial figures below are synthetic "
+    "unless explicitly identified as public information."
+)
+
+f1, f2, f3, f4 = st.columns(4)
+
+f1.metric(
+    "Annual Feedstock Spend",
+    f"€{scaleup_financials['annual_feedstock_spend'] / 1_000_000:.2f}M",
+)
+
+f2.metric(
+    "Working Capital",
+    f"€{scaleup_financials['working_capital_requirement'] / 1_000_000:.2f}M",
+)
+
+f3.metric(
+    "Scale-Up Investment",
+    f"€{scaleup_financials['total_scaleup_investment'] / 1_000_000:.2f}M",
+)
+
+f4.metric(
+    "Cash After Scale-Up",
+    f"€{funding_position['cash_after_scaleup'] / 1_000_000:.2f}M",
+)
+
+st.markdown("#### Capital Bridge")
+
+capital_available = funding_position[
+    "capital_available_before_raise"
+]
+
+st.write(
+    f"**Synthetic starting cash:** "
+    f"€{starting_cash / 1_000_000:.2f}M"
+)
+
+st.write(
+    f"**Public grant:** "
+    f"€{public_grant / 1_000_000:.2f}M"
+)
+
+st.write(
+    f"**Capital available before private raise:** "
+    f"€{capital_available / 1_000_000:.2f}M"
+)
+
+st.write(
+    f"**Modeled scale-up investment:** "
+    f"€{scaleup_financials['total_scaleup_investment'] / 1_000_000:.2f}M"
+)
+
+st.write(
+    f"**Cash remaining after scale-up:** "
+    f"€{funding_position['cash_after_scaleup'] / 1_000_000:.2f}M"
+)
 
 # ---------------------------------------------------------
 # MODEL NOTE
