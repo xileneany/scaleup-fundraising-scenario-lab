@@ -1,0 +1,5 @@
+scenario,utilization_rate,feedstock_conversion_ratio,supply_buffer,description
+Ramp-Up,0.60,1.8,0.15,Early-stage production ramp-up with lower facility utilization
+Base Scale-Up,0.85,1.8,0.15,Target operating scenario used as the central planning case
+High Demand,0.95,1.8,0.20,High utilization scenario requiring additional supply resilience
+Supply Stress,0.85,2.1,0.25,Stress scenario with higher feedstock requirements and a larger resilience buffer
