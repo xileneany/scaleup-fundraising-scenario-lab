@@ -540,50 +540,133 @@ fundraising_df = pd.DataFrame(fundraising_results)
 # EXECUTIVE OVERVIEW
 # ---------------------------------------------------------
 
-st.markdown(
-    """
-    <div style="
-        background-color: #16E879;
-        padding: 18px 28px;
-        border-radius: 18px;
-        margin-top: 20px;
-        margin-bottom: 28px;
-    ">
-        <div style="
-            color: #000000;
-            font-size: 2.4rem;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -1px;
-        ">
-            Executive Overview
-        </div>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+st.header("Executive Overview")
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric(
-    "Planned Capacity",
-    f"{production_capacity:,.0f} t/year",
-)
+with col1:
+    st.markdown(
+        f"""
+        <div style="
+            background:#16E879;
+            border-radius:18px;
+            padding:22px 24px;
+            min-height:125px;
+        ">
+            <div style="
+                font-size:0.95rem;
+                font-weight:500;
+                color:#111111;
+                margin-bottom:10px;
+            ">
+                Planned Capacity
+            </div>
 
-col2.metric(
-    "Modeled Output",
-    f"{requirements['expected_output_t']:,.0f} t/year",
-)
+            <div style="
+                font-size:2rem;
+                font-weight:650;
+                color:#000000;
+                line-height:1.1;
+            ">
+                {production_capacity:,.0f} t/year
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-col3.metric(
-    "Target Feedstock Coverage",
-    f"{requirements['target_contracted_supply_t']:,.0f} t/year",
-)
+with col2:
+    st.markdown(
+        f"""
+        <div style="
+            background:#16E879;
+            border-radius:18px;
+            padding:22px 24px;
+            min-height:125px;
+        ">
+            <div style="
+                font-size:0.95rem;
+                font-weight:500;
+                color:#111111;
+                margin-bottom:10px;
+            ">
+                Modeled Output
+            </div>
 
-col4.metric(
-    "Supply Coverage",
-    f"{supply_summary['coverage_pct']:.0%}",
-)
+            <div style="
+                font-size:2rem;
+                font-weight:650;
+                color:#000000;
+                line-height:1.1;
+            ">
+                {requirements['expected_output_t']:,.0f} t/year
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col3:
+    st.markdown(
+        f"""
+        <div style="
+            background:#16E879;
+            border-radius:18px;
+            padding:22px 24px;
+            min-height:125px;
+        ">
+            <div style="
+                font-size:0.95rem;
+                font-weight:500;
+                color:#111111;
+                margin-bottom:10px;
+            ">
+                Target Feedstock Coverage
+            </div>
+
+            <div style="
+                font-size:2rem;
+                font-weight:650;
+                color:#000000;
+                line-height:1.1;
+            ">
+                {requirements['target_contracted_supply_t']:,.0f} t/year
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with col4:
+    st.markdown(
+        f"""
+        <div style="
+            background:#16E879;
+            border-radius:18px;
+            padding:22px 24px;
+            min-height:125px;
+        ">
+            <div style="
+                font-size:0.95rem;
+                font-weight:500;
+                color:#111111;
+                margin-bottom:10px;
+            ">
+                Supply Coverage
+            </div>
+
+            <div style="
+                font-size:2rem;
+                font-weight:650;
+                color:#000000;
+                line-height:1.1;
+            ">
+                {supply_summary['coverage_pct']:.0%}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 # ---------------------------------------------------------
