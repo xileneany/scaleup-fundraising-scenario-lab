@@ -1,0 +1,8 @@
+assumption,value,unit,data_type,description
+planned_production_capacity,15000,tonnes_per_year,public,Announced annual protein production capacity for the Leuna facility
+public_grant,5500000,EUR,public,Announced German government grant supporting the industrial scale-up
+feedstock_conversion_ratio,1.8,tonnes_feedstock_per_tonne_output,synthetic,Illustrative feedstock requirement per tonne of finished output
+target_capacity_utilization,0.85,decimal,synthetic,Illustrative target utilization of installed production capacity
+supplier_capacity_buffer,0.15,decimal,synthetic,Additional contracted feedstock capacity maintained as a resilience buffer
+maximum_supplier_dependency,0.35,decimal,synthetic,Maximum recommended share of feedstock sourced from one supplier
+planning_horizon_months,36,months,synthetic,Illustrative operational planning horizon
