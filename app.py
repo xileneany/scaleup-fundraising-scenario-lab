@@ -12,6 +12,7 @@ from utils.financial_model import (
     calculate_funding_position,
     simulate_cash_runway,
     calculate_raise_scenario,
+    calculate_required_raise,
 )
 
 # ---------------------------------------------------------
