@@ -2,6 +2,8 @@ assumption,value,unit,data_type,description
 starting_cash,4200000,EUR,synthetic,Illustrative cash available at the start of the model
 monthly_revenue,850000,EUR,synthetic,Illustrative current monthly revenue
 monthly_revenue_growth,0.025,decimal,synthetic,Illustrative monthly revenue growth rate
+post_scaleup_revenue_uplift,0.50,decimal,synthetic,Illustrative revenue uplift as industrial production ramps following scale-up
+commercial_ramp_months,12,months,synthetic,Illustrative period over which the modeled post-scale-up revenue uplift is progressively realized
 gross_margin,0.42,decimal,synthetic,Illustrative gross margin before modeled scale-up effects
 monthly_payroll,620000,EUR,synthetic,Illustrative monthly payroll
 monthly_other_opex,310000,EUR,synthetic,Illustrative recurring operating expenses excluding modeled feedstock spend
