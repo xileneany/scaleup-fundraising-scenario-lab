@@ -100,14 +100,16 @@ scenario = scenarios.loc[
 
 st.sidebar.markdown("### Model Assumptions")
 
-utilization_rate = st.sidebar.slider(
+utilization_pct = st.sidebar.slider(
     "Capacity utilization",
-    min_value=0.40,
-    max_value=1.00,
-    value=float(scenario["utilization_rate"]),
-    step=0.05,
-    format="%.0f%%",
+    min_value=40,
+    max_value=100,
+    value=int(float(scenario["utilization_rate"]) * 100),
+    step=5,
+    format="%d%%",
 )
+
+utilization_rate = utilization_pct / 100
 
 conversion_ratio = st.sidebar.slider(
     "Feedstock conversion ratio",
