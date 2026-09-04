@@ -542,132 +542,45 @@ fundraising_df = pd.DataFrame(fundraising_results)
 
 st.header("Executive Overview")
 
+def kpi_card(label, value):
+    html = f"""
+<div style="background-color:#16E879; border-radius:18px; padding:24px 26px;">
+    <div style="font-size:16px; font-weight:600; color:#111111; margin-bottom:14px;">
+        {label}
+    </div>
+    <div style="font-size:34px; font-weight:700; color:#111111; line-height:1.1;">
+        {value}
+    </div>
+</div>
+"""
+    st.markdown(html, unsafe_allow_html=True)
+
+
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.markdown(
-        f"""
-        <div style="
-            background:#16E879;
-            border-radius:18px;
-            padding:22px 24px;
-            min-height:125px;
-        ">
-            <div style="
-                font-size:0.95rem;
-                font-weight:500;
-                color:#111111;
-                margin-bottom:10px;
-            ">
-                Planned Capacity
-            </div>
-
-            <div style="
-                font-size:2rem;
-                font-weight:650;
-                color:#000000;
-                line-height:1.1;
-            ">
-                {production_capacity:,.0f} t/year
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    kpi_card(
+        "Planned Capacity",
+        f"{production_capacity:,.0f} t/year"
     )
 
 with col2:
-    st.markdown(
-        f"""
-        <div style="
-            background:#16E879;
-            border-radius:18px;
-            padding:22px 24px;
-            min-height:125px;
-        ">
-            <div style="
-                font-size:0.95rem;
-                font-weight:500;
-                color:#111111;
-                margin-bottom:10px;
-            ">
-                Modeled Output
-            </div>
-
-            <div style="
-                font-size:2rem;
-                font-weight:650;
-                color:#000000;
-                line-height:1.1;
-            ">
-                {requirements['expected_output_t']:,.0f} t/year
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    kpi_card(
+        "Modeled Output",
+        f"{requirements['expected_output_t']:,.0f} t/year"
     )
 
 with col3:
-    st.markdown(
-        f"""
-        <div style="
-            background:#16E879;
-            border-radius:18px;
-            padding:22px 24px;
-            min-height:125px;
-        ">
-            <div style="
-                font-size:0.95rem;
-                font-weight:500;
-                color:#111111;
-                margin-bottom:10px;
-            ">
-                Target Feedstock Coverage
-            </div>
-
-            <div style="
-                font-size:2rem;
-                font-weight:650;
-                color:#000000;
-                line-height:1.1;
-            ">
-                {requirements['target_contracted_supply_t']:,.0f} t/year
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    kpi_card(
+        "Target Feedstock Coverage",
+        f"{requirements['target_contracted_supply_t']:,.0f} t/year"
     )
 
 with col4:
-    st.markdown(
-        f"""
-        <div style="
-            background:#16E879;
-            border-radius:18px;
-            padding:22px 24px;
-            min-height:125px;
-        ">
-            <div style="
-                font-size:0.95rem;
-                font-weight:500;
-                color:#111111;
-                margin-bottom:10px;
-            ">
-                Supply Coverage
-            </div>
-
-            <div style="
-                font-size:2rem;
-                font-weight:650;
-                color:#000000;
-                line-height:1.1;
-            ">
-                {supply_summary['coverage_pct']:.0%}
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
+    kpi_card(
+        "Supply Coverage",
+        f"{supply_summary['coverage_pct']:.0%}"
     )
-
 
 # ---------------------------------------------------------
 # PUBLIC VS SYNTHETIC CONTEXT
