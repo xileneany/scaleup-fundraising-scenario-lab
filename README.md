@@ -1,97 +1,102 @@
 # Industrial Scale-Up Scenario Lab
 
-An interactive decision-support prototype exploring supply resilience, capacity planning, capital requirements, and fundraising scenarios during industrial biotech scale-up.
+An interactive decision-support prototype exploring how industrial capacity expansion, supplier-network design and fundraising requirements interact during a biotech scale-up.
 
-## Case Context
+**Live app:** [Open the Streamlit application](https://fundraising-scenario.streamlit.app/)
 
-This portfolio project is inspired by MicroHarvest's publicly announced industrial scale-up in Leuna, Germany.
+## Why I built this
 
-According to publicly available information, MicroHarvest announced plans for its first industrial-scale microbial protein facility at Industriepark Leuna, with:
+I built this project as a portfolio case around a challenge that sits at the intersection of strategy, operations and finance: how to translate an industrial expansion plan into supply requirements, capital needs and management decisions.
 
-- Planned annual production capacity of 15,000 tonnes of protein
-- €5.5M in German government funding
-- Molasses announced as the primary feedstock
-- A regional sourcing strategy designed around short, local supply chains
-- Production expected to begin approximately two years after the February 2026 announcement
+The case is inspired by MicroHarvest's publicly announced scale-up in Leuna, Germany, including its planned 15,000-tonne annual production capacity and €5.5M public grant.
 
-The project uses this public context as the starting point for a hypothetical management case:
+Public company information is used only as context. Supplier relationships, operating costs, cash balances, revenue assumptions and private financing requirements in the model are synthetic.
 
-> How could management evaluate feedstock-supply resilience, operational expansion requirements, and future financing needs while preparing for industrial-scale production?
+## What the model connects
 
-## Business Questions
+The application links four management questions:
 
-The model will explore:
+- **Capacity planning:** What does a production target imply for expected output and feedstock requirements?
+- **Supply resilience:** Which supplier mix can cover demand while limiting concentration risk?
+- **Financial impact:** What working capital and scale-up investment could the operating plan require?
+- **Fundraising:** How much additional private capital could be required to protect a minimum cash buffer?
 
-- Can a hypothetical regional feedstock network support the requirements of a 15,000 t/year production facility?
-- Which supplier mix provides the best balance between capacity, cost, reliability, and supply risk?
-- How sensitive is the supply network to different feedstock-conversion and production-utilization assumptions?
-- What additional operational investment could different expansion strategies require?
-- How could non-dilutive public funding affect future private fundraising requirements?
-- What runway and strategic milestones could different financing scenarios support?
+The separate **Founder Recommendation** view translates the model outputs into an executive decision summary.
 
-## Decision Flow
+## Model flow
 
-Public scale-up context  
-→ Production assumptions  
-→ Feedstock requirements  
-→ Supplier network resilience  
-→ Expansion strategy  
-→ Capital requirements  
-→ Public funding  
-→ Private fundraising scenarios  
-→ Management recommendation
+Production scenario  
+→ Feedstock requirement  
+→ Supplier allocation  
+→ Scale-up investment  
+→ Cash runway  
+→ Funding requirement  
+→ Founder recommendation
 
-## Planned Application
+## Key features
 
-The Streamlit application will include:
+- Interactive production and supply assumptions
+- Supplier scoring and allocation model
+- Supplier concentration constraint
+- Scale-up investment and working-capital bridge
+- 36-month synthetic cash-runway simulation
+- 18- and 24-month funding requirement calculations
+- Private fundraising scenario comparison
+- Executive Founder Recommendation view
 
-1. Executive Overview
-2. Production & Feedstock Planning
-3. Supplier Network Simulator
-4. Expansion Financial Impact
-5. Fundraising & Runway Scenarios
-6. Founder Brief
+## Public context vs. synthetic assumptions
 
-## Data Boundary
+### Public context
 
-### Public Context
+The portfolio case uses publicly announced information regarding:
 
-The following inputs are based on publicly announced information:
-
-- Leuna, Germany as the location of the announced industrial facility
-- 15,000 tonnes/year of planned protein production capacity
-- €5.5M German government grant
+- 15,000 tonnes/year planned production capacity
+- Leuna, Germany as the announced industrial site
+- €5.5M German public grant
 - Molasses as the announced primary feedstock
-- Regional feedstock availability and a short/local supply-chain strategy
 
-### Synthetic Model Inputs
+### Synthetic model inputs
 
-All other operational and financial inputs in this project are synthetic or illustrative, including:
+The following are illustrative and should not be interpreted as MicroHarvest company data:
 
-- Supplier identities
-- Supplier capacities and prices
-- Feedstock conversion ratios
-- Transport costs
-- Supplier reliability and risk scores
+- Supplier identities and economics
+- Conversion and utilization assumptions
 - Operating expenses
-- Cash balances
-- Revenue assumptions
-- CAPEX requirements
-- Working-capital requirements
-- Private fundraising amounts
-- Runway projections
+- Revenue and margins
+- Starting cash
+- CAPEX assumptions beyond explicitly identified public information
+- Private fundraising requirements
+- Cash runway
 
-These assumptions are used solely to demonstrate scenario modelling and decision-support methods. They should not be interpreted as estimates of MicroHarvest's actual operations or financial position.
+## Tech stack
 
-## Public Source
+- Python
+- Pandas
+- Streamlit
+- Scenario-based financial modeling
+- GitHub
 
-Green Queen, February 12, 2026:
-"German Govt Awards $6.5M to MicroHarvest to Open Large-Scale Microbial Protein Factory"
+## About the project
 
-Additional public company information may be referenced as the project develops.
+Built by Xilene S. as an independent portfolio project focused on strategy, operations, supply planning and fundraising decision support.
 
-## Project Status
+This project is not affiliated with MicroHarvest and does not contain confidential or internal company information.
 
-Work in progress.
+## Repository structure
 
-The next development stages will connect synthetic supplier-network data with production assumptions, capital planning, and fundraising scenarios in an interactive Streamlit application.
+```text
+.
+├── app.py
+├── pages/
+│   └── 2_Founder_Recommendation.py
+├── data/
+│   ├── suppliers.csv
+│   ├── production_assumptions.csv
+│   ├── production_scenarios.csv
+│   └── financial_assumptions.csv
+├── utils/
+│   ├── supply_model.py
+│   └── financial_model.py
+└── requirements.txt
+
+
