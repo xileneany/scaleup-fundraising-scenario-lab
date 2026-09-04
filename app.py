@@ -540,7 +540,28 @@ fundraising_df = pd.DataFrame(fundraising_results)
 # EXECUTIVE OVERVIEW
 # ---------------------------------------------------------
 
-st.header("Executive Overview")
+st.markdown(
+    """
+    <div style="
+        background-color: #16E879;
+        padding: 18px 28px;
+        border-radius: 18px;
+        margin-top: 20px;
+        margin-bottom: 28px;
+    ">
+        <div style="
+            color: #000000;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        ">
+            Executive Overview
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 col1, col2, col3, col4 = st.columns(4)
 
