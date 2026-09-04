@@ -838,7 +838,6 @@ with r2:
         "Required Raise — 24M",
         f"€{required_raise_24m['gross_raise_required'] / 1_000_000:.1f}M"
     )
-)
 
 st.caption(
     "Calculated from the lowest projected cash balance within each "
