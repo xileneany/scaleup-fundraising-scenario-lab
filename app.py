@@ -314,6 +314,24 @@ base_runway_df, base_runway_months = simulate_cash_runway(
 )
 
 # ---------------------------------------------------------
+# REQUIRED PRIVATE FUNDING
+# ---------------------------------------------------------
+
+required_raise_18m = calculate_required_raise(
+    runway_df=base_runway_df,
+    minimum_cash_buffer=minimum_cash_buffer,
+    target_month=18,
+    transaction_cost_pct=transaction_cost_pct,
+)
+
+required_raise_24m = calculate_required_raise(
+    runway_df=base_runway_df,
+    minimum_cash_buffer=minimum_cash_buffer,
+    target_month=24,
+    transaction_cost_pct=transaction_cost_pct,
+)
+
+# ---------------------------------------------------------
 # FUNDRAISING SCENARIOS
 # ---------------------------------------------------------
 
