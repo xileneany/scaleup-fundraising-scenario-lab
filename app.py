@@ -236,6 +236,15 @@ st.info(
     "synthetic model assumptions."
 )
 
+nav_left, nav_right = st.columns([5, 1.4])
+
+with nav_right:
+    st.page_link(
+        "pages/2_Founder_Recommendation.py",
+        label="Founder Recommendation →",
+        use_container_width=True,
+    )
+    
 
 # ---------------------------------------------------------
 # SIDEBAR
