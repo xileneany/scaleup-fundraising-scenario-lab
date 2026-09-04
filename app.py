@@ -25,6 +25,137 @@ st.set_page_config(
     layout="wide",
 )
 
+# ---------------------------------------------------------
+# VISUAL THEME
+# ---------------------------------------------------------
+
+st.markdown(
+    """
+    <style>
+
+    /* ---------- GLOBAL ---------- */
+
+    .stApp {
+        background-color: #FFFFFF;
+        color: #0B0B0B;
+    }
+
+    .block-container {
+        padding-top: 3rem;
+        padding-bottom: 4rem;
+        max-width: 1500px;
+    }
+
+    /* ---------- TYPOGRAPHY ---------- */
+
+    h1 {
+        color: #0B0B0B !important;
+        font-weight: 700 !important;
+        letter-spacing: -1.5px;
+    }
+
+    h2 {
+        color: #0B0B0B !important;
+        font-weight: 650 !important;
+        letter-spacing: -0.7px;
+        margin-top: 2.2rem !important;
+    }
+
+    h3 {
+        color: #16E879 !important;
+        font-weight: 650 !important;
+    }
+
+    h4 {
+        color: #0B0B0B !important;
+        font-weight: 600 !important;
+    }
+
+    p, label, span {
+        color: #0B0B0B;
+    }
+
+    /* ---------- CAPTIONS ---------- */
+
+    [data-testid="stCaptionContainer"] p {
+        color: #777777 !important;
+    }
+
+    /* ---------- SIDEBAR ---------- */
+
+    [data-testid="stSidebar"] {
+        background-color: #F5F5F2;
+        border-right: 1px solid #E6E6E2;
+    }
+
+    [data-testid="stSidebar"] h2,
+    [data-testid="stSidebar"] h3 {
+        color: #0B0B0B !important;
+    }
+
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] label {
+        color: #202020 !important;
+    }
+
+    /* ---------- METRICS ---------- */
+
+    [data-testid="stMetricLabel"] {
+        color: #666666 !important;
+        font-weight: 500;
+    }
+
+    [data-testid="stMetricValue"] {
+        color: #0B0B0B !important;
+        font-weight: 500;
+    }
+
+    /* ---------- INFO BOX ---------- */
+
+    [data-testid="stAlert"] {
+        background-color: #F2FBFF;
+        border: 1px solid #A9E4FF;
+        border-radius: 4px;
+        color: #0B0B0B;
+    }
+
+    /* ---------- TABLES ---------- */
+
+    [data-testid="stDataFrame"] {
+        border: 1px solid #E5E5E5;
+        border-radius: 4px;
+    }
+
+    /* ---------- DIVIDERS ---------- */
+
+    hr {
+        border-color: #E5E5E5 !important;
+    }
+
+    /* ---------- LINKS ---------- */
+
+    a {
+        color: #009DDC !important;
+    }
+
+    /* ---------- SLIDERS ---------- */
+
+    [data-testid="stSlider"] {
+        accent-color: #16E879;
+    }
+
+    /* ---------- SELECT BOX ---------- */
+
+    [data-baseweb="select"] > div {
+        background-color: #FFFFFF;
+        color: #0B0B0B;
+        border-color: #D8D8D8;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # ---------------------------------------------------------
 # LOAD DATA
